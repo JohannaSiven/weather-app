@@ -36,6 +36,9 @@ function App() {
           theme={theme}
         />
       )}
+      <footer>
+        
+      </footer>
     </div>
   );
 }

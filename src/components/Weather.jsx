@@ -37,7 +37,10 @@ const Weather = ({ ...props }) => {
     <div className="weather-data">
       {!!location && !!current && (
         <div className="current-weather">
-          <LocationWidget data={location} />
+          <LocationWidget
+            data={location}
+            theme={theme}
+          />
           <CurrentStatsWidget data={current} />
         </div>
       )}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { usesDarkFill } from '../utils/iconFill';
 import { ReactComponent as ThermometerIcon } from '../icons/thermometer.svg';
 import { ReactComponent as RainIcon } from '../icons/rain.svg';
 import { ReactComponent as Sunrise } from '../icons/sunrise.svg';
@@ -24,19 +25,6 @@ const convert12To24h = (time12h) => {
   } else {
     return time12h.substring(0, time12h.length - 3);
   }
-};
-
-const usesDarkFill = (theme) => {
-  const darkFillThemes = [
-    'clear-day',
-    'cloudy-day',
-    'rainy-day',
-    'snowy-day',
-    'foggy',
-    'default',
-  ];
-
-  return darkFillThemes.includes(theme) ? true : false;
 };
 
 const ForecastWidget = (forecastData, theme) => {
@@ -83,13 +71,13 @@ const ForecastWidget = (forecastData, theme) => {
             className={`menu-btn ${toggle === 'temp' && 'active'}`}
             onClick={() => handleToggle('temp')}
           >
-            <ThermometerIcon />
+            <ThermometerIcon fill={iconStyle} />
           </button>
           <button
             className={`menu-btn ${toggle === 'resp' && 'active'}`}
             onClick={() => handleToggle('resp')}
           >
-            <RainIcon />
+            <RainIcon fill={iconStyle} />
           </button>
         </div>
       </div>
