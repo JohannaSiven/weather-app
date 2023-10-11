@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { ReactComponent as SearchIcon } from './icons/search.svg';
 import SearchLocation from './components/SearchLocation';
 
 import './App.css';
 
-import Weekly from './components/Weekly';
+import Weather from './components/Weather';
 
 import getUserLocation from './utils/location';
 
 function App() {
   const [location, setLocation] = useState('');
-
+  const [theme, setTheme] = useState('default');
   useEffect(() => {
     // when page renders for the first time, get location and set it
     getUserLocation()
@@ -23,13 +22,21 @@ function App() {
     setLocation(searchTerm);
   };
 
+  const handleThemeChange = (weatherConditions) => {
+    setTheme(weatherConditions);
+  };
+
   return (
-    <>
-      <div>
-        <SearchLocation handleSearch={handleSearch} />
-        {!!location && <Weekly city={location} />}
-      </div>
-    </>
+    <div className={`container ${theme}`}>
+      <SearchLocation handleSearch={handleSearch} />
+      {!!location && (
+        <Weather
+          city={location}
+          getTheme={handleThemeChange}
+          theme={theme}
+        />
+      )}
+    </div>
   );
 }
 

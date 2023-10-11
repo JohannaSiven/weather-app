@@ -5,13 +5,23 @@ const SearchLocation = ({ ...props }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div>
+    <div className="search-bar">
       <input
-        placeholder="Search for city"
+        className="search-input"
+        placeholder="Search for a city"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            setSearchTerm(e.target.value);
+            props.handleSearch(searchTerm);
+          }
+        }}
       />
-      <button onClick={() => props.handleSearch(searchTerm)}>
+      <button
+        className="search-btn"
+        onClick={() => props.handleSearch(searchTerm)}
+      >
         <SearchIcon />
       </button>
     </div>

@@ -1,12 +1,12 @@
 const LocationWidget = (locationData) => {
   const { name, region, country, localtime } = locationData.data;
   return (
-    <>
-      <h3>Your location: {name}</h3>
+    <div className="location-data">
+      <h2>{name}</h2>
       <h5>{region}</h5>
-      <h3>{country}</h3>
+      <h4>{country}</h4>
       <p>{localtime}</p>
-    </>
+    </div>
   );
 };
 
