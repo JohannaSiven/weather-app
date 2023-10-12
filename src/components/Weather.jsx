@@ -21,6 +21,8 @@ const Weather = ({ ...props }) => {
 
   const { current, location, forecast } = weatherData;
 
+  console.log({ weatherData });
+
   if (!!current) {
     const { condition, is_day } = current;
     const cond1 = Object.keys(conditionsMap).find((key) =>
